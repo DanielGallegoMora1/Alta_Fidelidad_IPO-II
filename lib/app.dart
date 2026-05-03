@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'core/app_theme.dart';
 import 'core/routes.dart';
 
 class App extends StatelessWidget {
@@ -9,9 +10,7 @@ class App extends StatelessWidget {
     return MaterialApp(
       title: 'Provincia Prototype',
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
+      theme: AppTheme.light,
       initialRoute: Routes.mapView,
       routes: Routes.routes,
     );

@@ -1,13 +1,5 @@
-import 'package:flutter/material.dart';
+import 'settings_view.dart';
 
-class EditProfileView extends StatelessWidget {
+class EditProfileView extends SettingsView {
   const EditProfileView({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: const Text('Edit Profile')),
-      body: const Center(child: Text('EditProfileView placeholder')),
-    );
-  }
 }
