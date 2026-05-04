@@ -18,7 +18,7 @@ class Routes {
   static const String settingsView = '/settings';
   static const String editProfileView = '/edit_profile';
 
-  static final Map<String, WidgetBuilder> routes = {
+  static final Map<String, WidgetBuilder> _routes = {
     mapView: (context) => const MapView(),
     detailView: (context) => const DetailView(),
     detailFilledView: (context) => const DetailFilledView(),
@@ -28,4 +28,27 @@ class Routes {
     settingsView: (context) => const SettingsView(),
     editProfileView: (context) => const EditProfileView(),
   };
+
+  static Route<dynamic> onGenerateRoute(RouteSettings settings) {
+    final builder = _routes[settings.name] ?? _routes[mapView]!;
+
+    return PageRouteBuilder(
+      settings: settings,
+      transitionDuration: const Duration(milliseconds: 140),
+      reverseTransitionDuration: const Duration(milliseconds: 110),
+      pageBuilder: (context, animation, secondaryAnimation) => builder(context),
+      transitionsBuilder: (context, animation, secondaryAnimation, child) {
+        final curvedAnimation = CurvedAnimation(
+          parent: animation,
+          curve: Curves.easeOut,
+          reverseCurve: Curves.easeIn,
+        );
+
+        return FadeTransition(
+          opacity: curvedAnimation,
+          child: child,
+        );
+      },
+    );
+  }
 }

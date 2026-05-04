@@ -12,7 +12,7 @@ class App extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: AppTheme.light,
       initialRoute: Routes.mapView,
-      routes: Routes.routes,
+      onGenerateRoute: Routes.onGenerateRoute,
     );
   }
 }
